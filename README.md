@@ -179,7 +179,7 @@ computers.some(function(computer) {
 
 ```
 
-# reduce
+## reduce
 
 ```javascript
 var numbers = [10, 20, 30];
@@ -223,10 +223,7 @@ function balancedParens(string) {
 }
 
 // unbalanced returns => true or false
-
 balancedParens('(((())))');
-
-
 ```
 
 
