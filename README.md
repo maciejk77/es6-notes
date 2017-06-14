@@ -153,9 +153,29 @@ function postsForComment(posts, comment) {
 
 ```
 
+## every & some
 
+- `every` logic: False && True && False => false (iterator check whether every given element of the computer array meet the criteria, if not returns => false)
 
+```javascript
+var computers = [
+  { model: 'Apple', ram: '24' },
+  { model: 'Compaq', ram: '4' },
+  { model: 'Acer', ram: '32' },
+];
 
+computers.every(function(computer) {
+  return computer.ram > 16;
+});
 
+```
 
+- `some` logic : True || False || True => true (iterator check whether some elements of computer array (at least one in our example) meet the criteria and returns => true)
+```javascript
+
+computers.some(function(computer) {
+  return computer.ram > 16;
+});
+
+```
 
