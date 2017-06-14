@@ -226,8 +226,18 @@ function balancedParens(string) {
 balancedParens('(((())))');
 ```
 
+## var vs const, let
 
+- `const` won't change over time
+- `let` free to change over time - similar to `var`
 
+```javascript
+const name = 'Jane';
+let title = 'Web Developer'
+
+name = 'John' // will throw an error - trying to reassing new value to fixed `const`
+title = `Senior Web Deveoper` - allowed to overwrite the previous title
+```
 
 
 
