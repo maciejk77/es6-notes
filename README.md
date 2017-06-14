@@ -235,9 +235,25 @@ balancedParens('(((())))');
 const name = 'Jane';
 let title = 'Web Developer'
 
-name = 'John' // will throw an error - trying to reassing new value to fixed `const`
-title = `Senior Web Deveoper` - allowed to overwrite the previous title
+name = 'John'; // will throw an error - trying to reasign new value to fixed `const`
+title = `Senior Web Deveoper`; // allowed to overwrite the previous title
 ```
 
+# tempate strings / template literals
+
+- syntactic sugar change brought to ES6 for string interpolation
+
+```javascript
+function getMessage() {
+  const year = new Date().getFullYear();
+
+  // return "The year is " + year; <= this to be replaced with below
+  return `The message us ${year}`;
+}
+
+getMessage();
+
+
+```
 
 
