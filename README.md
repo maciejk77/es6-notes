@@ -135,7 +135,21 @@ var users = [
 users.find(function(user) {
   return user.name === 'Alex';
 });
+```
 
+```javascript
+var posts = [
+  { id: 1, title: 'New Post' },
+  { id: 2, title: 'Old Post' }
+];
+
+var comment = { postId: 1, 'Great Post' };
+
+function postsForComment(posts, comment) {
+  return posts.filter(function(post) {
+    return post.id === comment.postId;
+  });
+}
 
 ```
 
