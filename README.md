@@ -239,7 +239,7 @@ name = 'John'; // will throw an error - trying to reasign new value to fixed `co
 title = `Senior Web Deveoper`; // allowed to overwrite the previous title
 ```
 
-# tempate strings / template literals
+# template strings / template literals
 
 - syntactic sugar change brought to ES6 for string interpolation
 
