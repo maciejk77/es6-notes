@@ -241,7 +241,7 @@ title = `Senior Web Deveoper`; // allowed to overwrite the previous title
 
 # template strings / template literals
 
-- syntactic sugar change brought to ES6 for string interpolation
+- syntactic sugar, change brought to ES6 for string interpolation
 
 ```javascript
 function getMessage() {
@@ -253,7 +253,14 @@ function getMessage() {
 
 getMessage();
 
+```
+
+## fat arrow functions
+
+```javascript
+
 
 ```
+
 
 
