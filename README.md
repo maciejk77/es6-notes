@@ -179,3 +179,58 @@ computers.some(function(computer) {
 
 ```
 
+# reduce
+
+```javascript
+var numbers = [10, 20, 30];
+var sum = 0;
+
+// reduce helper returns current sum add a number from array and returns new sum 
+// until all elements of numbers array will be iterated over, `...}, 0);` 
+// zero here is the starting point as per `var sum = 0;` declaration 
+numbers.reduce(function(sum, number) {
+  return sum + number;
+}, 0);
+```
+
+```javascript
+var primaryColors = [
+  { color: 'red' },
+  { color: 'yellow' },
+  { color: 'blue' }
+];
+
+// previous is and array start at [] as per `...}, [])`
+primaryColors.reduce(function(previous, primaryColor) {
+  // previous array is being updated by reduce iterator
+  previous.push(primaryColor.color);
+
+  // previous array has to be returned after each iteration to be available as a new previous value
+  return previous;
+}, []);
+```
+
+```javascript
+// balanced () problem - the example of application of reduce
+// Question: given the string which contain some number of parenthesis, are the expression correctly balanced?
+function balancedParens(string) {
+  // ! flips the condition into truthy true or false from numeric value
+  return !string.split("").reduce(function(previous, char) {
+    if(previous < 0) { return previous; } // covers the edge case balancedParens(')(');
+    if(char === '(') { return previous++; }
+    if(char === ')') { return previous--; }
+  }, 0);  
+}
+
+// unbalanced returns => true or false
+
+balancedParens('(((())))');
+
+
+```
+
+
+
+
+
+
