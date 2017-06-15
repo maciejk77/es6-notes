@@ -258,9 +258,54 @@ getMessage();
 ## fat arrow functions
 
 ```javascript
+// Classic function syntax
+const add = function(a, b) {
+  return a + b;
+}
 
+// Version with fat arrow function
+const add = (a, b) => {
+  return a + b;
+}
 
+// Simplified version of fat arrow function for single JS expression
+const add = (a, b) => a + b;
 ```
 
+- if there is just one argument ( ) parentheses can be omitted
 
+```javascript
+// Initial fat arrow function
+const double = (number) => number * 2;
+
+// Refactored, ommitted parentheses
+const double = number => number * 2;
+```
+
+```javascript
+// Classic map function
+var numbers = [1, 2, 3];
+
+numbers.map(function(number) {
+  return number * 2;
+});
+
+// Compact map function
+numbers.map(number => number * 2);
+```
+
+```javascript
+// This object will throw an error as 'this' is out of of scope - undefined
+// Fix 1: above teamSummary add a line => var self = this; to cache this value and replace thi inside teamSummary function
+// Fix 2: on closing )}; of teamSummary change to => }, bind(this));
+const team = {
+  members: ['Jane', 'Bill'],
+  teamName: 'Super Squad',
+  teamSummary: function() {
+    return this.members.map(function(member) {
+      return `${member} is on team ${this.teamName}`;
+    });
+  }
+};
+```
 
