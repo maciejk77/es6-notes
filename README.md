@@ -298,14 +298,43 @@ numbers.map(number => number * 2);
 // This object will throw an error as 'this' is out of of scope - undefined
 // Fix 1: above teamSummary add a line => var self = this; to cache this value and replace thi inside teamSummary function
 // Fix 2: on closing )}; of teamSummary change to => }, bind(this));
+// FIX 3: simply changing to fat arrow function fixes the problem
 const team = {
   members: ['Jane', 'Bill'],
   teamName: 'Super Squad',
   teamSummary: function() {
+    // FIX 3 => return this.members.map((member) => {
     return this.members.map(function(member) {
       return `${member} is on team ${this.teamName}`;
     });
   }
 };
 ```
+- fat arrow functions make use of lexical `this`
+- `this` inside the arrow function is set to context of the outside function
+
+## enhanced object literals
+
+```javascript
+function createBookShop(inventory) {
+  return {
+    inventory: inventory,
+    inventoryValue: function() {
+      return this.inventory.reduce((total, book) => total + book.price, 0);
+    },
+    priceForTitle: function(title) {
+      return this.inventory.find(book => book.title === title).price;
+    }
+  };
+}
+
+const inventory = [
+  { title: 'Harry Potter', price: 10 },
+  { title: 'Eloquent Javascript', price: 15 }
+];
+
+const bookShop = createBookShop(inventory);
+```
+
+
 
