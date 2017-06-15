@@ -315,13 +315,20 @@ const team = {
 
 ## enhanced object literals
 
+- shortening **key value pairs** and **function definitions**
+
 ```javascript
+
+// Classic way and refactoring to ES6
 function createBookShop(inventory) {
   return {
+    // below line can be replaced with just => inventory,
     inventory: inventory,
+    // below line can be replaced with => inventoryValue()
     inventoryValue: function() {
       return this.inventory.reduce((total, book) => total + book.price, 0);
     },
+     // below line can be replaced with => priceForTitle(title)
     priceForTitle: function(title) {
       return this.inventory.find(book => book.title === title).price;
     }
