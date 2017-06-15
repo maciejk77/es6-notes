@@ -359,3 +359,8 @@ makeAjaxRequest('google.com', null); // explicitly saying null and return nothin
 makeAjaxRequest('google.com', undefined); // reasingned to default GET 
 ```
 
+## rest & spread operator
+
+```javascript
+
+```
