@@ -324,7 +324,7 @@ function createBookShop(inventory) {
   return {
     // below line can be replaced with just => inventory,
     inventory: inventory,
-    // below line can be replaced with => inventoryValue()
+    // below line can be replaced with => inventoryValue() {
     inventoryValue: function() {
       return this.inventory.reduce((total, book) => total + book.price, 0);
     },
@@ -343,5 +343,19 @@ const inventory = [
 const bookShop = createBookShop(inventory);
 ```
 
+## default function arguments
 
+- way of setting up default values for arguments
+
+```javascript
+function makeAjaxRequest(url, method = 'GET') {
+  return method;
+  // logic to make request
+}
+
+makeAjaxRequest('google.com'); // GET
+makeAjaxRequest('google.com, 'POST'); // POST - overwrites default GET
+makeAjaxRequest('google.com, null); // explicitly saying null and return nothing not GET or POST, no value here will be reasigned to default
+makeAjaxRequest('google.com, undefined); // reasingned to default GET 
+```
 
