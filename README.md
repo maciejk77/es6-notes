@@ -354,8 +354,8 @@ function makeAjaxRequest(url, method = 'GET') {
 }
 
 makeAjaxRequest('google.com'); // GET
-makeAjaxRequest('google.com, 'POST'); // POST - overwrites default GET
-makeAjaxRequest('google.com, null); // explicitly saying null and return nothing not GET or POST, no value here will be reasigned to default
-makeAjaxRequest('google.com, undefined); // reasingned to default GET 
+makeAjaxRequest('google.com', 'POST'); // POST - overwrites default GET
+makeAjaxRequest('google.com', null); // explicitly saying null and return nothing not GET or POST, no value here will be reasigned to default
+makeAjaxRequest('google.com', undefined); // reasingned to default GET 
 ```
 
