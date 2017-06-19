@@ -1,7 +1,4 @@
-# ES6 Helper Methods
-
-```javascript
-```
+# ES6 notes
 
 ## forEach
 
@@ -239,7 +236,7 @@ name = 'John'; // will throw an error - trying to reasign new value to fixed `co
 title = `Senior Web Deveoper`; // allowed to overwrite the previous title
 ```
 
-# template strings / template literals
+## template strings / template literals
 
 - syntactic sugar, change brought to ES6 for string interpolation
 
@@ -479,6 +476,51 @@ const = {
   locations: ['Mountain View', 'NY', 'London']
 }
 
-const { locations: locations } = Google // returns ['Mountain View', 'NY', 'London']
-const { locations: [ locations ] } = Google // returns 'Mountain View'
+const { locations: locations } = Google; // returns ['Mountain View', 'NY', 'London']
+const { [ locations ] } = Google; // returns 'Mountain View'
 ```
+
+
+```javascript
+
+// example where there is no need to maintain an order when passing elements in the object, destructuring will pick up whats needed
+
+function signup({ email, password, dateOfBirth, city, username }) {
+  // code here
+  // code here
+};
+
+const user = {
+  username: 'myname',
+  password: 'mypassword',
+  email: 'myemail@example.com',
+  dateOfBirth: '1/1/1990',
+  city: 'NY'
+};
+
+signup(user) // passing a user object to signup function, which will take arguments in different order
+```
+
+```javascript
+const points = [
+  [4, 5],
+  [10, 1],
+  [0, 50],
+];
+
+// how to turn above to object => const pair = [{ x: 4, y:5}, { x:10, y:1 }, { x:0, y:40 }]
+
+// map over points first
+points.map(pair => {
+  //destructure
+  const [ x, y ] = pair;
+});
+
+// destructuring can be done directly in arguments
+points.map( ([ x, y ]) => {  
+  // return { x: x, y: y };
+  return { x, y }; // simplified, when key/value pair is identical, can be replaced by just key - improved object literal syntax
+ });
+
+```
+
