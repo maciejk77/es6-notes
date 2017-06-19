@@ -379,7 +379,7 @@ addNumbers(1,2,3,4,5,6,7,8); // instead of passing array we can pass unlimited n
 const defualtColors = ['red', 'green'];
 const userFavouriteColors = ['orange', 'yellow'];
 
-[ ''blue', ...defaultColors, 'green', ...userFavouriteColors ];
+[ 'blue', ...defaultColors, 'green', ...userFavouriteColors ];
 // the end result is concatenating both arrays in to one, flattening both and pulling all element to this new one
 // adding in new elements is also possible e.g. 'blue', 'green'
 
