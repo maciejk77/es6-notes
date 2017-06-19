@@ -360,7 +360,125 @@ makeAjaxRequest('google.com', undefined); // reasingned to default GET
 ```
 
 ## rest & spread operator
+- `rest operator` captures an unlimited number of arguments e.g. numbers and putting them into single array
 
 ```javascript
+// function addNumber(numbers) { <= this is replaced by below
+function addNumber(...numbers) {
+  numbers.reduce((sum, number) => {
+    return sum + number;
+  }, 0);
+}
 
+addNumbers(1,2,3,4,5,6,7,8); // instead of passing array we can pass unlimited number of arguments
+
+```
+
+```javascript
+// another example of rest
+const defualtColors = ['red', 'green'];
+const userFavouriteColors = ['orange', 'yellow'];
+
+[ ''blue', ...defaultColors, 'green', ...userFavouriteColors ];
+// the end result is concatenating both arrays in to one, flattening both and pulling all element to this new one
+// adding in new elements is also possible e.g. 'blue', 'green'
+
+```
+
+```javascript
+// another example
+function validateShoppingList(...items) {
+  if(items.indexOf('milk') < 0) {
+    return ['milk', ...items];
+  } else {
+    return items;
+  }
+}
+
+validateShoppingList('oranges', 'milk');   // ['oranges', 'milk']
+validateShoppingList('oranges', 'eggs');   // ['milk', 'oranges', 'eggs']
+```
+
+## destructuring
+
+- by using  i.e. `{ type }` on left hand side, we are not creating object, declaring new variable 'type' and want to reference expense.type property
+- to destucturing property we use `{}`, to destructure element we use `[]` e.g. `const [ name ] = companies;`
+
+```javascript
+var expense = {
+  type: 'Business',
+  amount: '$45 USD'
+};
+
+// var type = expense.type;
+// var amount = expense.amount;
+
+// ES6
+
+const { type } = expense;
+const { amount } = expense;
+
+// or even simpler
+const { type, amount } = expense;
+```
+
+- in another example properties can be pulled from the first object, no need to reference them by savedFile.extension etc. Also the multiple properties can be passed e.g. { encoding }
+
+```javascript
+// another example
+
+var savedFile = {
+  extension: 'jpg',
+  name: 'repost',
+  size: 14040
+};
+
+function fileSummary({ name, extension, size }, { encoding }) {
+  return `The file ${name}.${extension} is of size ${size} and encoded in ${encoding}`;
+}
+
+fileSummary(savedFile, { encoding: 'UTF-8' });
+```
+
+```javascript
+const companies = {
+  'Google',
+  'Facebook',
+  'Uber'
+};
+
+const [ firstCompany, secondCompany, thirdCompany ] = companies;
+// const [ firstCompany, ...rest ] = companies; - a way to mix in rest operator
+
+// as oppose to old way of doing it
+// var firstCompany = companies[0];
+// var secondCompany = companies[1];
+// var thirdCompany = companies [2];
+
+```
+
+```javascript
+const companies = {
+  { name: 'Google', 'Mountain View' },
+  { name: 'Facebook', 'Menlo Park' },
+  { name: 'Uber', 'San Fransisco' }
+};
+
+// [location] returns the whole first object `{ name: 'Google', 'Mountain View' }`
+const [location] = companies;
+
+// [{ location }] returns the value for the location property on first object 'Mountain View'
+const [{ location }] = companies;
+
+```
+
+```javascript
+// another example
+
+const = {
+  locations: ['Mountain View', 'NY', 'London']
+}
+
+const { locations: locations } = Google // returns ['Mountain View', 'NY', 'London']
+const { locations: [ locations ] } = Google // returns 'Mountain View'
 ```
