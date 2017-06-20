@@ -562,3 +562,50 @@ toyota.honk();
 toyota.drive();
 toyota;
 ```
+
+## for...of loop
+
+## generators
+
+### what is a generator
+- function which can be entered and exited multiple times
+- function which returns a value and comes back to the place where we left this off
+
+```javascript
+function* numbers { yield }
+// or
+function *numbers { yield }
+```
+
+### what does generator do?
+### iteration with generators?
+### generator delegation
+### generators with Symbol.iterator
+
+```javascript
+function* shopping() {
+  // stuff on the sidewalk
+
+  // walking down the sidewalk
+
+  // go into the store with cash
+  const stuffFromStore = yield 'cash';  // { 'value': 'cash', 'done': false }
+
+  // walking back home
+  return stuffFromStore
+}
+
+// stuff in the store
+const gen = shopping(); // invoking function doesn not do anything here
+gen.next(); // leaving our house
+// walked into the store
+// walking up and down the aisles...
+// purchase our stuff
+
+gen.next('groceries'); // leaving the store with groceries -  { 'value': 'groceries', 'done': true }
+
+```
+
+
+
+
