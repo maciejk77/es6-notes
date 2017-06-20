@@ -563,8 +563,6 @@ toyota.drive();
 toyota;
 ```
 
-## for...of loop
-
 ## generators
 
 ### what is a generator
@@ -606,6 +604,29 @@ gen.next('groceries'); // leaving the store with groceries -  { 'value': 'grocer
 
 ```
 
+```javascript
+// Another example of generators, for... of loop 
+
+function* colors() {
+  yield 'red';
+  yield 'blue';
+  yield 'green';
+}
+
+const gen = {
+  gen.next(); // { 'value': 'red', 'done': false } - value returned by yield
+  gen.next(); // { 'value': 'blue', 'done': false }
+  gen.next(); // { 'value': 'green', 'done': false }
+  gen.next(); // { 'done': false }
+};
+
+// for... of loop works really well with generators
+const = [ myColors ];
+for( let color of colors()) { // iterating over colors generator, running it every time colors(), next value on each call 
+  myColors.push(color); // adding to the array
+}
+
+```
 
 
 
