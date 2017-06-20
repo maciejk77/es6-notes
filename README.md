@@ -523,4 +523,41 @@ points.map( ([ x, y ]) => {
  });
 
 ```
+## classes
 
+```javascript
+class Car {
+  constructor(options) {
+  // constructor({ title }) { - another option with desctructuring
+    this.title = options.title;
+    // this.title = title; - another option with desctructuring
+  }
+
+  drive() { 
+    return 'vroom';
+  }
+}
+
+class Toyota extends Car { // 'extends' enables to inherit from Car class
+  constructor(options) { // not { color } this time as we would only pass color instead of color and title
+    // super(); - if only one value is passed above in constructor i.e. { color } 
+    super(options); // Car.constructor; - enables to call a constructor function on parent class e.g. Car
+    // if `constructor({ color });` => `this.color = color;`
+    this.color = options.color;
+  }
+
+  honk() {
+    return 'beep';
+  }
+}
+
+// an instance of the car
+const car = new Car({ title: 'Toyota' });
+car.drive();
+
+// another instance with inheriting from paren class Car
+const toyota = new Toyota({ color: 'red', title: 'Daily Driver' });
+'------';
+toyota.honk();
+toyota;
+```
