@@ -530,7 +530,7 @@ class Car {
   constructor(options) {
   // constructor({ title }) { - another option with desctructuring
     this.title = options.title;
-    // this.title = title; - another option with desctructuring
+    // this.title = title; - option with desctructuring
   }
 
   drive() { 
@@ -555,9 +555,10 @@ class Toyota extends Car { // 'extends' enables to inherit from Car class
 const car = new Car({ title: 'Toyota' });
 car.drive();
 
-// another instance with inheriting from paren class Car
+// another instance with inheriting from parent class Car
 const toyota = new Toyota({ color: 'red', title: 'Daily Driver' });
 '------';
 toyota.honk();
+toyota.drive();
 toyota;
 ```
