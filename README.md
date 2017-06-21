@@ -747,7 +747,7 @@ promise = new Promise((resolve, reject) => {
   setTimeout(() => { // delay to illustrate promise completed after 3 sec
     resolve(); // turns call into resolved
   }, 3000);
-  reject() // turns call into rejected (only first is executed, put above if you want to return rejected promise)
+  reject(); // turns call into rejected (only first is executed, put above if you want to return rejected promise)
 });
 
 promise
@@ -768,6 +768,31 @@ promise
 
 ```
 
+## fetch helper (native)
 
+- a useful link to get JSON object place holder `https://jsonplaceholder.typicode.com/posts`
+- response coming from fetch() does not include data, needs to be formatted first
+- another shortcoming of fetch(), whenever server response was above 300 status code, we do not enter .catch case
 
+```javascript
+url = "https://jsonplaceholder.typicode.com/posts";
+
+fetch(url)
+  .then( response => response.json() ); // .json() to get access to data object returned
+  // response coming from fetch() does not include data, needs to be formatted first
+  .then( data => console.log(data) ); // returning data object(s) after formatting and accessing JSON
+```
+
+```javascript
+// Another example, another shortcoming of fetch(), whenever server response was above 300 status code, we do not enter .catch case
+url = "https://jsonplaceholder.typicode.com/posts1222333333"; // some dummy url to return reject as a result
+
+fetch(url)
+  .then( response => console.log(response) ); 
+  // response coming from fetch() does not include data, needs to be formatted first
+  .then( data => console.log(data) ); // returning data object(s) after formatting and accessing JSON
+  .catch(error => console.log('BAD', error)); // should return BAD string and error, but if status over 300 it is not happening
+
+  // catch will return error only if there is a network error i.e. providing wrong/does not exist domain altogether
+```
 
