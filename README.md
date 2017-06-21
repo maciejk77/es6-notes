@@ -628,5 +628,78 @@ for( let color of colors()) { // iterating over colors generator, running it eve
 
 ```
 
+```javascript
+// Another example
+
+const testingTeam = { // defining the data object
+  lead: 'Amanda',
+  tester: 'Bill'
+};
+
+const engineeringTeam = { // defining the data object
+  size: 3,
+  department: 'Engineering',
+  lead: 'Jill',
+  manager: 'Alex',
+  engineer: 'Dave',
+  testingTeam // reference to testing team object
+};
+
+
+function* TeamIterator(team) { // returning the specific data - lead, manager, engineer
+  yield team.lead;
+  yield team.manager;
+  yield team.engineer;
+  const testingTeamGenerator = TestingTeamIterator(team.testingTeam); // team is on engineeringTeam data object which takes data from testingTeam object
+  yield* testingTeamGenerator; // will return all values via testingTeamGenerator const
+}
+
+function* TestingTeamIterator(team) {
+  yield team.lead;
+  yield team.tester;  
+}
+
+const names = [];
+for(let name of TeamIterator(engineeringTeam)) { // iterating over passing data object to iterator which yields data specified in generator
+  names.push(name);
+}
+
+```
+
+## symbol iterator
+
+```javascript
+// REFACTORING of the above code...   Symbol.iterator and for...of loop
+ 
+const testingTeam = { // defining the data object
+  lead: 'Amanda',
+  tester: 'Bill',
+  [Symbol.iterator]: function* () { // a way to tell how this data object should be available to yield* for iteration for..of loop
+    yield this.lead; 
+    yield this.tester;
+  }
+};
+
+const engineeringTeam = { // defining the data object
+  testingTeam, // reference to testing team object
+  size: 3,
+  department: 'Engineering',
+  lead: 'Jill',
+  manager: 'Alex',
+  engineer: 'Dave',
+  [Symbol.iterator]: function* () { // a way to tell how this data object should be available to yield* for iteration for..of loop
+    yield this.lead;
+    yield this.manager;
+    yield this.engineer;
+    yield* this.testingTeam; // yield value is another generator function so * kick in iteration over in testingTeam [Symbol.iterator]
+  }
+};
+
+const names = [];
+for(let name of engineeringTeam) { 
+  names.push(name);
+}
+
+```
 
 
