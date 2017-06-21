@@ -770,9 +770,9 @@ promise
 
 ## fetch helper (native)
 
-- a useful link to get JSON object place holder `https://jsonplaceholder.typicode.com/posts`
-- response coming from fetch() does not include data, needs to be formatted first
-- another shortcoming of fetch(), whenever server response was above 300 status code, we do not enter .catch case
+- a useful link to get JSON object placeholder `https://jsonplaceholder.typicode.com/posts`
+- response coming from `fetch()` does not include data, needs to be formatted first with `.json()`
+- another shortcoming of `fetch()`, whenever server response was above 300 status code, we do not enter `.catch {}` case
 
 ```javascript
 url = "https://jsonplaceholder.typicode.com/posts";
@@ -794,5 +794,6 @@ fetch(url)
   .catch(error => console.log('BAD', error)); // should return BAD string and error, but if status over 300 it is not happening
 
   // catch will return error only if there is a network error i.e. providing wrong/does not exist domain altogether
+  // url = "https://jsonplaceholder.typi112233.com/posts1222333333";
 ```
 
