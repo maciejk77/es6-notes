@@ -661,7 +661,7 @@ for(let name of TeamIterator(engineeringTeam)) { // iterating over passing data 
 
 ```
 
-## symbol iterator
+### symbol iterator
 
 ```javascript
 // REFACTORING of the above code...   Symbol.iterator and for...of loop
