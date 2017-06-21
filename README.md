@@ -736,4 +736,38 @@ for(let value of tree) {
 
 ```
 
+## promises
+
+- no idea of pausing an execution of code in JS, you can defer execution but this is fixed value only or 'sleep' on a line of code for i.e. 1000 ms
+- difficulty to predict how quickly we will get response e.g. on Ajax call
+
+```javascript
+// Promise is a native function
+promise = new Promise((resolve, reject) => {
+  setTimeout(() => { // delay to illustrate promise completed after 3 sec
+    resolve(); // turns call into resolved
+  }, 3000);
+  reject() // turns call into rejected (only first is executed, put above if you want to return rejected promise)
+});
+
+promise
+  .then(() => {
+    console.log('finally finished!');  // callback executed as soon as promise enters resolved state
+  })
+  .then(() => {
+    console.log('I was also ran!!'); // chaining of callbacks is allowed
+  }); 
+
+// Simplified below
+
+promise
+  .then(() => console.log('finally finished!'); // not returning anything from () => so simplified like this is okay
+  .then(() => console.log('I was also ran!!');
+  // handling errors
+  .catch(() => console.log('An error!');
+
+```
+
+
+
 
