@@ -575,11 +575,6 @@ function* numbers { yield }
 function *numbers { yield }
 ```
 
-### what does generator do?
-### iteration with generators?
-### generator delegation
-### generators with Symbol.iterator
-
 ```javascript
 function* shopping() {
   // stuff on the sidewalk
