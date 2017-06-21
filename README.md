@@ -568,6 +568,7 @@ toyota;
 ### what is a generator
 - function which can be entered and exited multiple times
 - function which returns a value and comes back to the place where we left this off
+- array helpers 'map', 'forEach' DO NOT work with generators!
 
 ```javascript
 function* numbers { yield }
@@ -693,6 +694,44 @@ const engineeringTeam = { // defining the data object
 const names = [];
 for(let name of engineeringTeam) { 
   names.push(name);
+}
+
+```
+
+### tree data structure, for..of loop application, generators with recursion
+
+```javascript
+
+// data structure 
+
+class Comment {
+  constructor(content, children) { // passing content value and array of children
+    this.content = content;
+    this.children = children;
+  }
+
+  *[Symbol.iterator]() { // improved object literals syntax, how to write inside a class
+    yield this.content;
+    for(let child of this.children) { 
+      yield* child;
+    }
+  }
+}
+
+const children = [
+  new Comment('good comment', []),
+  new Comment('bad comment', []),
+  new Comment('okay comment', []),
+  new Comment('meh....', [])
+];
+
+const tree = new Comment('Great post!', children); // like in thread this is parent comment, displaying children comments below
+
+// iteration over data structure
+
+const values = [];
+for(let value of tree) {
+  values.push(value);
 }
 
 ```
